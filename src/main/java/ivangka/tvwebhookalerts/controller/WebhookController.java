@@ -19,8 +19,7 @@ public class WebhookController {
 
     // endpoint: /tradingview/alert?token=<URL_TOKEN>
     @PostMapping("/tradingview/alert")
-    public void receiveAlert(@RequestParam String token,
-                             @RequestBody String payload) {
+    public void receiveAlert(@RequestParam String token, @RequestBody String payload) {
         if (token.equals(config.getUrlToken())) {
             telegramBotController.sendMessage(payload);
         }
